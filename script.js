@@ -4,7 +4,7 @@
 function getWeather(){
   
     let Cityid = document.getElementById("city");
-     let City  = Cityid.value
+    let City  = Cityid.value
     let Url = (`https://api.openweathermap.org/data/2.5/weather?q=${City}&appid=98740f4ebc0d63bc0f8ba70090e5a091`);
 
     fetch(Url)
@@ -20,13 +20,11 @@ function getWeather(){
             Cityid.value = '';
             window.location.reload();
 
-        }
-     
-           
+        }      
      let weatherData = data.main.temp - 273.15;
      let tempText = parseInt(weatherData);
      temp.innerText = tempText;
-     let nameUpperCase = City.toUpperCase();
+     let nameUpperCase = data.name.toUpperCase();
      cityName.innerText = nameUpperCase;
      Main.innerText = data.weather[0].main;
 
@@ -49,11 +47,7 @@ function getWeather(){
       images.src = "";
      }
     
-
-     
         Cityid.value = '';
-
-
 
     })
 }
